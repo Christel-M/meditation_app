@@ -1,0 +1,9 @@
+<h1>Hello <%=@user.first_name.capitalize%></h1>
+
+<%=@user.first_name%>
+<%=@user.last_name%> <br>
+<%=@user.email%> <br>
+<%= @user.location.name%> <br>
+<%=@user.level.name%> <br>
+
+<%= link_to 'Logout', logout_path, method: :delete %>

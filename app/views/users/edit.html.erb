@@ -1,0 +1,19 @@
+<h1>Edit <%=@user.first_name.capitalize%>'s Profile</h1>
+
+<%= form_for(@user) do |u|%>
+<p>First Name: <br>
+  <%= u.text_field :first_name %></p>
+<p>Last Name <br>
+  <%= u.text_field :last_name %></p>
+<p>Email: <br>
+  <%= u.email_field :email %></p>
+<p>Select your location: <br>
+  <%= u.collection_select :location_id, Location.order(:name), :id, :name, { include_blank: true } %></p>
+<p>Level of experience: <br>
+  <%= u.collection_select :level_id, Level.order(:name), :id, :name, { include_blank: true } %></p>
+
+<p>
+  <%= u.submit 'Save Changes' %>
+</p>
+
+<%end%>

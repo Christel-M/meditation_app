@@ -1,0 +1,15 @@
+<h1>Create Blog</h1>
+<%= form_for(@blog) do |b| %>
+<p>Blog Title<br>
+  <%= b.text_field :title %>
+</p>
+<p>Description <br>
+  <%= b.text_area :description, size: "25x9" %>
+</p>
+<p>Include tags separated by spaces <br>
+  <%= b.text_field :tags %>
+</p>
+<p>
+  <%= b.submit "Create Blog" %>
+</p>
+<% end %>
