@@ -6,8 +6,7 @@
 <p><%= u.email_field :email, placeholder: "Email" %></p>
 <p><%= u.password_field :password, placeholder: "Password" %></p>
 <p><%= u.password_field :password_confirmation, placeholder: "Confirm Password" %></p>
-<p>Select your location: <br>
-  <%= u.collection_select :location_id, Location.all, :id, :name, { include_blank: true } %></p>
+<p><%= u.text_field :location_name, placeholder: "Location" %></p>
 <p>Level of experience: <br>
   <%= u.collection_select :level_id, Level.all, :id, :name, { include_blank: true } %></p>
 

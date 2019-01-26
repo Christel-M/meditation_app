@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_01_25_164926) do
+ActiveRecord::Schema.define(version: 2019_01_26_214122) do
 
   create_table "blogs", force: :cascade do |t|
     t.string "title"
@@ -36,8 +36,9 @@ ActiveRecord::Schema.define(version: 2019_01_25_164926) do
   end
 
   create_table "locations", force: :cascade do |t|
-    t.string "name"
-    t.integer "visitor_count"
+    t.string "address"
+    t.float "latitude"
+    t.float "longitude"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -46,9 +47,8 @@ ActiveRecord::Schema.define(version: 2019_01_25_164926) do
     t.string "first_name"
     t.string "last_name"
     t.string "email"
-    t.integer "location_id"
+    t.string "location_name"
     t.integer "level_id"
-    t.integer "blog_id"
     t.string "password_digest"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

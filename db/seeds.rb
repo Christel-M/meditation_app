@@ -20,8 +20,3 @@ Lesson.create(name: "Advanced",
 Level.create(name: "Beginners")
 Level.create(name: "Intermediate")
 Level.create(name: "Advanced")
-
-Location.create(name: "New York", visitor_count: 1)
-Location.create(name: "New Jersey", visitor_count: 100)
-Location.create(name: "Pennsylvania", visitor_count: 300)
-Location.create(name: "California", visitor_count: 5000)
