@@ -10,7 +10,7 @@ class BlogsController < ApplicationController
     if @blog.valid?
       @blog.save
       flash[:notice] = "Blog Created"
-      redirect_to blogs_path
+      redirect_to users_path
     else
       puts @blog.errors.messages
       flash[:notice] = "#{@blog.errors.messages}"
@@ -24,7 +24,7 @@ class BlogsController < ApplicationController
 
   def update
     @blog = Blog.find(params[:id])
-      if @blog.update(blog_edit_params)
+      if @blog.update(blog_params)
         flash[:notice] = "Blog Modified"
         redirect_to @blog
       else
@@ -39,7 +39,7 @@ class BlogsController < ApplicationController
 
   def show
     @blog = Blog.find(params[:id])
-    # @related_blogs = Post.where()
+    @related_blogs = Blog.where(tags: @blog )
   end
 
   private
@@ -47,5 +47,5 @@ class BlogsController < ApplicationController
   def blog_params
       params.require(:blog).permit(:title, :description, :tags)
   end
-  
+
 end

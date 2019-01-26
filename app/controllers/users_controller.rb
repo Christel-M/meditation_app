@@ -46,7 +46,8 @@ class UsersController < ApplicationController
   end
 
   def index
-    @users = User.all
+    @user = User.find(session[:user_id])
+    @user_blogs = Blog.where(user_id: @user.id)
   end
 
   def show
