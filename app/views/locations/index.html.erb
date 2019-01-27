@@ -4,3 +4,9 @@
     <%= submit_tag "Search Near", :name => nil %>
   </p>
 <% end %>
+
+<h1>Locations</h1>
+<% for location in @locations %>
+  <%= location.address %> &nbsp
+  <%= link_to "Show", location %> <br>
+<% end %>

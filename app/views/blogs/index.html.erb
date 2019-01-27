@@ -1,4 +1,11 @@
 <h1>Blogs</h1>
-<%@blogs.reverse.each do |blog|%>
-<a href="<%=blog_path(blog.id)%>"><%=blog.title%></a> <br>
+<%if @blogs.empty?%>
+  <h1>There are no blogs</h1>
+  <%= link_to 'Create Blog',  new_blog_path%> <br>
+<%else%>
+  <%@blogs.reverse.each do |blog|%>
+  <p>
+    <a href="<%=blog_path(blog.id)%>"><%=blog.title%></a> by: <%=blog.user.first_name.capitalize%>
+  </p>
+  <%end%>
 <%end%>
