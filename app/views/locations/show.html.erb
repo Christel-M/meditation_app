@@ -1,2 +1,18 @@
-<h1>Locations#show</h1>
-<p>Find me in app/views/locations/show.html.erb</p>
+<h1>Locations</h1>
+<p><%=@location.address%></p>
+<p><%=@location.latitude%></p>
+<p><%=@location.longitude%></p>
+
+<hr>
+
+<iframe width="300" height="300" frameborder="0" style="border:0"
+ src="https://www.google.com/maps/embed/v1/place?key=<%=ENV['MAP_API_KEY']%>&q=<%=@location.latitude%>,<%=@location.longitude%>"
+ allowfullscreen>
+</iframe>
+
+<h3>Nearby locations</h3>
+<ul>
+<% for location in @location.nearbys(10) %>
+  <li><%= link_to location.address, location %> (<%= location.distance.round(2) %> miles)</li>
+<% end %>
+</ul>

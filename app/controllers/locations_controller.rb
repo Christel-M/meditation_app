@@ -4,10 +4,10 @@ class LocationsController < ApplicationController
   end
 
   def create
-    @location = Location.new(params[:location])
+    @location = Location.new(loc_params)
     if @location.valid?
       @location.save
-      redirect_to users_path
+      redirect_to @location
     else
       puts @location.errors.messages
       render 'new'
@@ -23,9 +23,16 @@ class LocationsController < ApplicationController
 
   def index
     if params[:search].present?
-    @locations = Location.near(params[:search], 10, :order => :distance)
+    @locations = Location.near(params[:search], 5, :order => :distance)
   else
     @locations = Location.all
   end
   end
+
+  private
+
+  def loc_params
+    params.require(:location).permit(:address)
+  end
+
 end

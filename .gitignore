@@ -34,3 +34,5 @@
 /node_modules
 yarn-debug.log*
 .yarn-integrity
+
+/initializers/geocoder.rb
