@@ -3,3 +3,18 @@
 <p><%=@blog.tags%></p>
 
 <hr>
+
+<h3>Recent Blogs</h3>
+
+<%if @recent_blogs.empty?%>
+  <h1>There are recent blogs</h1>
+<%else%>
+  <%@recent_blogs.take(3).each do |blog|%>
+  <%if blog.user_id != current_user.id && blog.id != @blog.id%>
+  <p>
+    <a href="<%=blog_path(blog.id)%>"><%=blog.title%></a> by: <%=blog.user.first_name.capitalize%>
+    &nbsp Created: <%=blog.created_at.strftime('%b %d, %C%y')%>
+  </p>
+  <%end%>
+  <%end%>
+<%end%>

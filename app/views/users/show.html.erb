@@ -4,6 +4,13 @@
 <%=@user.last_name%> <br>
 <%=@user.email%> <br>
 <%= @user.location_name%> <br>
-<%=@user.level.name%> <br>
+<%=@user.level.name%> <br> <br>
+
+<%location = Location.create(address: @user.location_name)%>
+<iframe width="300" height="300" frameborder="0" style="border:0"
+ src="https://www.google.com/maps/embed/v1/place?key=<%=ENV['MAP_API_KEY']%>&q=<%=location.latitude%>,<%=location.longitude%>"
+ allowfullscreen>
+</iframe>
 
 <%= link_to 'Logout', logout_path, method: :delete %>
+<a href="#"></a>
