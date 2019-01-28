@@ -1,15 +1,16 @@
 Rails.application.routes.draw do
-
-  get 'locations/new'
-  get 'locations/edit'
-  get 'locations/show'
-  get 'locations/index'
+  mount ActionCable.server => '/cable'
   root 'pages#home'
 
   resources :users
   resources :blogs
   resources :lessons
   resources :locations
+  resources :messages, only:[:create]
+
+  resources :users, only:[:new, :create] do
+   resources :chats, only: [:index, :show, :create]
+  end
 
   get '/login', to: 'sessions#login'
   post '/login', to: 'sessions#create'

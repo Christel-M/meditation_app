@@ -30,6 +30,9 @@ gem 'bcrypt', '~> 3.1.7'
 #geocoder
 gem 'geocoder'
 
+#jquery
+gem 'jquery-rails'
+
 # Use ActiveStorage variant
 # gem 'mini_magick', '~> 4.8'
 

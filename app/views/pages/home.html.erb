@@ -4,6 +4,7 @@
 <%= link_to 'View All Blogs',  blogs_path%> <br>
 <%= link_to 'View My Blogs',  users_path%> <br>
 <%= link_to 'View Lessons',  lessons_path%> <br>
+<%= link_to 'View Chats',  user_chats_path(current_user)%> <br>
 <%= link_to 'Logout', logout_path, method: :delete %>
 <%else%>
 <h1>Hello</h1>
