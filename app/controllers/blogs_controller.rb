@@ -39,7 +39,7 @@ class BlogsController < ApplicationController
 
   def show
     @blog = Blog.find(params[:id])
-    @related_blogs = Blog.where(tags: @blog )
+    # @related_blogs = Blog.where(tags: @blog )
   end
 
   private

@@ -1,3 +1,13 @@
 <h1><%=@lesson.name%></h1>
 <p><%=@lesson.content%></p>
 <p>Level: <%=@lesson.level.name%></p>
+
+<h3>Related Lessons</h3>
+<%related_lessons = Lesson.where(level_id: @lesson.level_id)%>
+<%related_lessons.each do |lesson| %>
+  <%if lesson.id != @lesson.id%>
+    <p>
+      <a href="<%=lesson_path(lesson.id)%>"><%=lesson.name%></a>
+    </p>
+  <%end%>
+<%end%>

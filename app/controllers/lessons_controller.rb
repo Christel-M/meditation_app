@@ -27,11 +27,13 @@ class LessonsController < ApplicationController
   # end
 
   def index
-    @lessons = Lesson.all
+    @lessons = Lesson.order(Level_id: :asc)
+
   end
 
   def show
     @lesson = Lesson.find(params[:id])
+    
   end
 
   private

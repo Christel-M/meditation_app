@@ -1,7 +1,5 @@
 <h1>Locations</h1>
 <p><%=@location.address%></p>
-<p><%=@location.latitude%></p>
-<p><%=@location.longitude%></p>
 
 <hr>
 
@@ -10,9 +8,9 @@
  allowfullscreen>
 </iframe>
 
-<h3>Nearby locations</h3>
+<h3>Recently Searched locations</h3>
 <ul>
 <% for location in @location.nearbys(10) %>
-  <li><%= link_to location.address, location %> (<%= location.distance.round(2) %> miles)</li>
+  <li><%= link_to location.address, location %> (<%= location.distance.round(2) %> miles) <br></li>
 <% end %>
 </ul>
