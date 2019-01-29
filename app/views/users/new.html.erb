@@ -8,7 +8,7 @@
 <p><%= u.password_field :password_confirmation, placeholder: "Confirm Password" %></p>
 <p><%= u.text_field :location_name, placeholder: "Location" %></p>
 <p>Level of experience: <br>
-  <%= u.collection_select :level_id, Level.all, :id, :name, { include_blank: true } %></p>
+  <%= u.collection_select :level_id, Level.order('id ASC'), :id, :name, { include_blank: true } %></p>
 
 <p>
   <%= u.submit 'Sign Up' %>

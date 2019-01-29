@@ -1,7 +1,12 @@
+<!-- Search form -->
+<%= form_tag(blogs_path, method: :get) do %>
+  Search Blog By Title<%= text_field_tag :title, params[:title] %>
+  <%= submit_tag "Search Blog", name: nil %>
+<% end %>
+<!-- end search form -->
 <h1>Blogs</h1>
 <%if @blogs.empty?%>
   <h1>There are no blogs</h1>
-  <%= link_to 'Create Blog',  new_blog_path%> <br>
 <%else%>
   <%@blogs.reverse.each do |blog|%>
   <p>

@@ -6,3 +6,17 @@
       <a href="<%=lesson_path(lesson.id)%>"><%=lesson.name%></a>
     </p>
 <%end%>
+
+<h4>Intermediate Lessons</h4>
+<%@int_lessons.each do |lesson| %>
+    <p>
+      <a href="<%=lesson_path(lesson.id)%>"><%=lesson.name%></a>
+    </p>
+<%end%>
+
+<h4>Advanced Lessons</h4>
+<%@adv_lessons.each do |lesson| %>
+    <p>
+      <a href="<%=lesson_path(lesson.id)%>"><%=lesson.name%></a>
+    </p>
+<%end%>

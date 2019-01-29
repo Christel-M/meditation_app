@@ -10,7 +10,7 @@ class BlogsController < ApplicationController
     if @blog.valid?
       @blog.save
       flash[:notice] = "Blog Created"
-      redirect_to users_path
+      redirect_to myblogs_path
     else
       puts @blog.errors.messages
       flash[:notice] = "#{@blog.errors.messages}"
@@ -34,12 +34,16 @@ class BlogsController < ApplicationController
   end
 
   def index
-    @blogs = Blog.all
+    if params[:title]
+      @blogs = Blog.where('title LIKE ?', "%#{params[:title]}%")
+    else
+      @blogs = Blog.all
+    end
   end
 
   def show
     @blog = Blog.find(params[:id])
-    # @related_blogs = Blog.where(tags: @blog )
+    @recent_blogs = Blog.order(created_at: :desc)
   end
 
   private

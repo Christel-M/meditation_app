@@ -1,9 +1,10 @@
 <h1>Locations</h1>
 
 <%= form_for(@location) do |l| %>
-<p><%= l.text_field :address, placeholder: :address %>
+<p>Search Address <br>
+  <%= l.text_field :address, placeholder: :address %>
 </p>
 <p>
-  <%= l.submit "Search Location" %>
+  <%= l.submit "Search" %>
 </p>
 <% end %>
