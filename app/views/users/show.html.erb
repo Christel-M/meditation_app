@@ -1,9 +1,11 @@
-<h1>Hello <%=@user.first_name.capitalize%></h1>
+<%if logged_in?%>
+  <h1>Hello <%=@user.first_name.capitalize%></h1>
 
-<%=@user.first_name%>
-<%=@user.last_name%> <br>
-<%=@user.email%> <br>
-<%= @user.location_name%> <br>
-<%=@user.level.name%> <br>
+  <%=@user.first_name%>
+  <%=@user.last_name%> <br>
+  <%=@user.email%> <br>
+  <%= @user.location_name%> <br>
+  <%=@user.level.name%> <br>
 
-<%= link_to 'Logout', logout_path, method: :delete %>
+  <%= link_to 'Logout', logout_path, method: :delete %>
+<%end%>

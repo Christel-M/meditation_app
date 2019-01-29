@@ -1,8 +1,8 @@
-<h1>Meditiation Practices</h1>
+<h1>Meditiation Tutorials</h1>
 
-<%@lessons.each do |lesson| %>
+<h4>Begginer Lessons</h4>
+<%@beg_lessons.each do |lesson| %>
     <p>
       <a href="<%=lesson_path(lesson.id)%>"><%=lesson.name%></a>
-      for: <%=lesson.level.name%>
     </p>
 <%end%>

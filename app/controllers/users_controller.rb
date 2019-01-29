@@ -1,11 +1,11 @@
 class UsersController < ApplicationController
   def new
     @user = User.new
-    if logged_in?
-      redirect_to root_path
-    else
-      render 'new'
-    end
+    # if logged_in?
+    #   redirect_to root_path
+    # else
+    #   render 'new'
+    # end
   end
 
   def create
@@ -32,7 +32,7 @@ class UsersController < ApplicationController
   def destroy
     @user =  User.find(params[:id])
     @user.destroy
-    session["user_id"] = nil
+    session[:user_id] = nil
     redirect_to root_path
   end
 
@@ -46,8 +46,12 @@ class UsersController < ApplicationController
   end
 
   def index
-    @user = User.find(session[:user_id])
-    @user_blogs = Blog.where(user_id: @user.id)
+    if logged_in?
+      @user = User.find(session[:user_id])
+      @user_blogs = Blog.where(user_id: @user.id)
+    else
+      redirect_to login_path
+    end
   end
 
   def show

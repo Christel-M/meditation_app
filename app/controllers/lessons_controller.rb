@@ -27,13 +27,16 @@ class LessonsController < ApplicationController
   # end
 
   def index
-    @lessons = Lesson.order(Level_id: :asc)
+    # @lessons = Lesson.order(Level_id: :asc)
+    @beg_lessons = Lesson.where(level_id: 1)
+    @int_lessons = Lesson.where(level_id: 2)
+    @adv_lessons = Lesson.where(level_id: 3)
 
   end
 
   def show
     @lesson = Lesson.find(params[:id])
-    
+
   end
 
   private
