@@ -14,21 +14,193 @@
  *= require_self
  */
 
- body {
-   background-color: #e4e9fd;
- }
+ /* font-family: 'Courgette', cursive;
+ font-family: 'Montserrat', sans-serif; */
 
- .vue-accordion {
- 		width: 100%;
- 		overflow: hidden;
- 		height: 200px;
- 		max-width: 900px;
-     }
-     .vue-accordion ul {
- 		width: 100%;
- 		height: 100%;
- 		display: table;
- 		table-layout: fixed;
- 		margin: 0;
- 		padding: 0;
-     }
+@import url('https://fonts.googleapis.com/css?family=Courgette|Montserrat');
+
+body {
+  margin: 0;
+  height: 100%;
+  width: 100%;
+  font-family: 'Montserrat', sans-serif;
+  background-color: #e4e4e4;
+}
+
+#homebg {
+  background-image: url("/assets/purplebg.jpg");
+  background-attachment: fixed;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+.hidden {
+  display: none;
+}
+
+.center {
+  justify-content: center;
+  text-align: center;
+}
+
+.home {
+  width: 100%;
+  height: 100%;
+  padding-top: 4%;
+  bottom: 10%;
+}
+
+.home h1 {
+  font-family: 'Courgette', cursive;
+  font-size: 4.5em;
+  color: #e5efee;
+}
+
+.home h2 {
+  font-family: 'Courgette', cursive;
+  font-size: 2.5em;
+  color: #e5efee;
+}
+
+.flower {
+  width: 500px;
+  height: auto;
+  animation: rotate 10s infinite linear;
+}
+
+.bounce-enter-active {
+  animation: bounce-in 1s;
+}
+.bounce-leave-active {
+  animation: bounce-in .01s reverse;
+}
+
+.sign-page {
+  display: grid;
+  width: 100%;
+  position: fixed;
+  padding-top: 8%;
+  grid-template: 600px / 470px;
+  justify-content: center;
+}
+
+.sign-grid {
+  display: block;
+  background-color: rgb(255,255,255);
+  color: #af96cf;
+  width: 100%;
+  box-shadow: 3px 3px 3px 3px rgba(0,0,0,.3);
+  border-radius: 20px;
+}
+
+.sign-grid h1 {
+  text-transform: uppercase;
+  font-size: 3.5em;
+}
+
+.sign-grid a {
+  text-decoration: none;
+  color: #87b8bd;
+  border-bottom: 1px dashed #87b8bd;
+  transition: color 0.4s;
+}
+
+.sign-grid a:hover {
+  color: #af96cf;
+  border-bottom: 1px dashed #af96cf;
+}
+
+#login {
+  padding-top: 15%;
+}
+
+.sign-grid input[type=text], input[type=email], input[type=password], select{
+  width: 70%;
+  background: transparent;
+	border: none;
+	border-bottom: 1px dashed #87b8bd;
+	outline: none;
+	padding: 5px;
+  font-style: italic;
+  font-size: 1em;
+}
+
+.sign-grid input[type=submit] {
+  display: inline-block;
+  position: relative;
+  text-decoration: none;
+  color: #af96cf;
+  border: 2px solid #af96cf;
+  padding: 10px 30px;
+  font-size: 1.1em;
+  transition: color 0.5s;
+  text-transform: uppercase;
+}
+
+.sign-grid input[type=submit]:hover {
+  background-color: #af96cf;
+  color: #ffffff;
+}
+/*********************ANIMATIONS************************/
+
+@keyframes rotate {
+  from {
+    transform: rotate(0deg);
+  }
+  from {
+    transform: rotate(359deg);
+  }
+}
+
+@keyframes bounce-in {
+  0% {
+    transform: scale(0);
+  }
+  50% {
+    transform: scale(1.5);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+
+/*********************BUTTONS************************/
+.btn{
+  display: inline-block;
+  position: relative;
+  padding: 10px 20px;
+  text-decoration: none;
+}
+
+.btn-sign {
+  color: #e5efee;
+  border: 2px solid #e5efee;
+  font-size: 1.1em;
+  transition: color 0.4s;
+  text-transform: uppercase;
+}
+
+.btn-sign:after {
+  content: "";
+  border: 2px solid rgba(0,0,0,0);
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  margin: auto;
+  transition: all 0.4s;
+}
+
+.btn-sign:hover {
+  color: #e5efee;
+}
+
+.btn-sign:hover:after {
+  border:2px solid #e5efee;
+  width: calc(100% - 10px);
+  height: calc(100% + 10px);
+}

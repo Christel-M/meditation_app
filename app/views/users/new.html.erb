@@ -1,17 +1,22 @@
-<h1>Sign Up</h1>
+<body id="homebg">
+  <div class="sign-page center">
+    <div class="sign-grid">
+      <h1>Sign Up</h1>
 
-<%= form_for(@user) do |u|%>
-<p><%= u.text_field :first_name, placeholder: "First Name" %></p>
-<p><%= u.text_field :last_name, placeholder: "Last Name" %></p>
-<p><%= u.email_field :email, placeholder: "Email" %></p>
-<p><%= u.password_field :password, placeholder: "Password" %></p>
-<p><%= u.password_field :password_confirmation, placeholder: "Confirm Password" %></p>
-<p><%= u.text_field :location_name, placeholder: "Location" %></p>
-<p>Level of experience: <br>
-  <%= u.collection_select :level_id, Level.order('id ASC'), :id, :name, { include_blank: true } %></p>
-
-<p>
-  <%= u.submit 'Sign Up' %>
-</p>
-
-<%end%>
+      <%= form_for(@user) do |u|%>
+      <p><%= u.text_field :first_name, placeholder: "First Name" %></p>
+      <p><%= u.text_field :last_name, placeholder: "Last Name" %></p>
+      <p><%= u.email_field :email, placeholder: "Email" %></p>
+      <p><%= u.password_field :password, placeholder: "Password" %></p>
+      <p><%= u.password_field :password_confirmation, placeholder: "Confirm Password" %></p>
+      <p><%= u.text_field :location_name, placeholder: "Location" %></p>
+      <p>Level of experience: <br>
+        <%= u.collection_select :level_id, Level.order('id ASC'), :id, :name, { include_blank: true } %></p>
+      <p>
+        <%= u.submit 'Sign Up' %>
+      </p> <br>
+      <%end%>
+      <a href="/login">I'm already a member</a>
+    </div>
+  </div>
+</body>

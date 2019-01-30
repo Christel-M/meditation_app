@@ -8,14 +8,14 @@
 // layout file, like app/views/layouts/application.html.erb
 
 // console.log('Hello World from Webpacker')
-// import Vue from 'vue/dist/vue.esm.js';
-// import App from '../app.vue'
-//
-//  document.addEventListener('DOMContentLoaded', () => {
-//    new Vue({
-//   el: '#app',
-//   data: {
-//     message: 'Hello Vue.js!'
-//   }
-// })
-// })
+import Vue from 'vue/dist/vue.esm.js';
+import App from '../app.vue'
+
+document.addEventListener('DOMContentLoaded', () => {
+  new Vue({
+    el: '#home',
+    data: {
+      show: false
+    }
+  })
+})
