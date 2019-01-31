@@ -17,8 +17,13 @@
         <p><strong>Location:</strong> <%= @user.location_name%></p>
         <p><strong>Level:</strong> <%=@user.level.name%></p>
         <%if logged_in? && @user.id == current_user.id%>
-          <a href="<%= edit_user_path(@user.id) %>">Edit</a>
-          <%= link_to 'Logout', logout_path, method: :delete %>
+        <a class="icon blog-icon" href="<%=edit_user_path%>">
+          <span class="tooltiptext">Edit Profile</span>
+          <img src="/assets/edit.png"></a> &nbsp &nbsp
+          <%= link_to user_path, remote: true, method: :delete, data: {confirm: 'Are you sure?'}, class: 'icon blog-icon' do %>
+            <span class="tooltiptext">Delete Account</span>
+            <%= image_tag("/assets/delete.png") %>
+          <%end%>
         <%end%>
       </div>
     </div>
@@ -26,17 +31,30 @@
   <div class="center">
   <%if current_user.id == @user.id%>
   <h1>Recent Blogs</h1>
-    <div class="bloggrid">
-      <%if @recent_blogs != nil %>
+  <h3>
+    <a class="center" href="<%= myblogs_path(@user_id)%>">View All</a>
+  </h3>
+    <div class="lessons center">
+        <%if @recent_blogs != nil %>
         <%@recent_blogs.reverse.take(3).each do |blog| %>
-          <a href="<%=blog_path(blog.id)%>"><%=blog.title%></a>
+        <div>
+          <a href="<%=blog_path(blog.id) %>">
+            <%=blog.image.attachment.nil? ? tag(:img, src:"/assets/blog.jpg", class: "blogimg"): image_tag(blog.image, class: "blogimg")%>
+          </a>
+          <h2>
+            <a href="<%=blog_path(blog.id)%>"><%=blog.title%></a> by: <%=blog.user.first_name.capitalize%>
+          </h2>
+          <p>
+            Created: <%=blog.created_at.strftime('%b %d, %C%y')%>
+          </p>
+          <p><%=blog.description.truncate(200)%></p> <br><br><br>
+        </div>
         <%end%>
-      <%else%>
-        <h3>You haven't created a blog yet!</h3>
-        <%= link_to 'Create Blog',  new_blog_path%> <br>
-      <%end%>
-      <a href="<%= myblogs_path(@user_id)%>">View More</a>
-    </div>
+      </div>
+        <%else%>
+          <h3>You haven't created a blog yet!</h3>
+          <%= link_to 'Create Blog',  new_blog_path%> <br>
+        <%end%>
 
     <%else%>
 

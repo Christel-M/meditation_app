@@ -90,3 +90,30 @@
 .blog-grid a:hover {
   color: #63aba3;
 }
+
+p.like {
+  background-image: url("/assets/heart.png");
+  line-height: 2em;
+  padding-left: 23%;
+  display: block;
+  background-position: top;
+  background-size: auto 100%;
+  background-repeat: no-repeat;
+  height: 30px;
+}
+
+span.bloglike img {
+  line-height: 2em;
+  background-position: top;
+  background-size: auto 100%;
+  background-repeat: no-repeat;
+  height: 30px;
+}
+
+.like {
+  display: block;
+  background-position: top;
+  background-size: auto 100%;
+  background-repeat: no-repeat;
+  height: 30px;
+}

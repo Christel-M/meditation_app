@@ -87,12 +87,12 @@
   background-color: #e6e6e6;
 }
 
-.lessons a {
+.lessons h3, a {
   text-decoration: none;
   color: inherit;
 }
 
-.lesson h2:hover, a:hover {
+.lesson h3:hover, h2:hover, a:hover {
   color: #63aba3;
 }
 

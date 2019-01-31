@@ -79,3 +79,30 @@
   justify-content: center;
   grid-gap: 2%;
 }
+
+
+.icon{
+  height: 38px;
+}
+
+.blog-icon img{
+  height: 30px;
+  width: 30px;
+}
+
+.icon .tooltiptext {
+  visibility: hidden;
+  background-color: #414141;
+  color: #ffffff;
+  text-align: center;
+  border-radius: 6px;
+  padding: 1% 1%;
+  position: absolute;
+  z-index: 1;
+  margin-top: -25px;
+  font-size: .7em;
+}
+
+.icon:hover .tooltiptext {
+  visibility: visible;
+}

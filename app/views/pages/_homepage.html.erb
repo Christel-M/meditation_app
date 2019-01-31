@@ -1,7 +1,12 @@
 <div class="homepage">
   <div class="homepage-grid center">
     <div>
-      <h2>Continue lesson</h2>
+      <h2>Continue Reading</h2>
+      <%@user_lessons.take(3).each do |lesson| %>
+      <h3>
+        <a href="/lessons/<%=lesson.level.name.downcase%>/<%=lesson.id%>"><%=lesson.name%></a>
+      </h3>
+      <%end%>
     </div>
 
     <div>

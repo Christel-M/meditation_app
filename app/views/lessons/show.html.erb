@@ -5,9 +5,9 @@
       <p><%=@lesson.content%></p>
     </div>
   </div>
-  
+
   <%related_lessons = Lesson.where(level_id: @lesson.level_id)%>
-  <h2 class="center">Related Lessons</h2>
+  <h2 class="center">Continue Reading</h2>
   <div class="lessons center">
     <%related_lessons.each do |lesson| %>
       <%if lesson.id != @lesson.id%>

@@ -1,15 +1,21 @@
-<h1>Create Blog</h1>
-<%= form_for(@blog) do |b| %>
-<p>Blog Title<br>
-  <%= b.text_field :title %>
-</p>
-<p>Description <br>
-  <%= b.text_area :description, size: "25x9" %>
-</p>
-<p>Include tags separated by spaces <br>
-  <%= b.text_field :tags %>
-</p>
-<p>
-  <%= b.submit "Create Blog" %>
-</p>
-<% end %>
+<div class="edit-page center">
+  <div class="edit-grid ">
+    <h1>Create Blog</h1>
+    <%= form_for(@blog) do |b| %>
+    <p>Blog Title<br>
+      <%= b.text_field :title %>
+    </p>
+    <p>Description <br>
+      <%= b.text_area :description, size: "25x9" %>
+    </p>
+    <p>Include tags separated by spaces<br>
+      <%= b.text_field :tags %>
+    </p>
+    <p>Attach Image <br>
+    <%= b.file_field :image, direct_upload: true %></p>
+    <p>
+      <%= b.submit "Create Blog" %>
+    </p> <br>
+    <% end %>
+  </div>
+</div>

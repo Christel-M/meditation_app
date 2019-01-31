@@ -1,7 +1,7 @@
 <div class="blogpage">
   <h1 class="center">Blogs</h1>
   <%if @user_blogs.empty?%>
-  <h1>There are no user_blogs</h1>
+  <h1>There are no blogs</h1>
   <%else%>
   <div class="blog-grid center">
     <%@user_blogs.reverse.each do |blog|%>
@@ -12,9 +12,14 @@
       <h2>
         <a href="<%=blog_path(blog.id) %>"><%=blog.title%></a> <br>
       </h2>
-      <p><%=blog.likes.count %> <%= (blog.likes.count) == 1 ? 'Like' : 'Likes'%></p>
-      <span>By: <a href="<%=user_path(blog.user_id)%>"><%=blog.user.first_name.capitalize%></a></span>
-      <p><%=blog.description.truncate(200)%></p>
+      <p><%=blog.description.truncate(250)%></p>
+      <a class="icon blog-icon" href="<%=edit_blog_path(blog.id)%>">
+        <span class="tooltiptext">Edit </span>
+        <img src="/assets/edit.png"></a> &nbsp &nbsp
+        <%= link_to blog_path(blog.id), remote: true, method: :delete, data: {confirm: 'Are you sure?'}, class: 'icon blog-icon' do %>
+          <span class="tooltiptext">Delete</span>
+          <%= image_tag("/assets/delete.png") %>
+        <%end%> <br> <br>
       <a class="btn btn-primary" href="<%=blog_path(blog.id)%>">Read More</a>
     </div>
     <%end%>

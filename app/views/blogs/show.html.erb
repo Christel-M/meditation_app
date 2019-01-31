@@ -1,27 +1,52 @@
-<h1><%=@blog.title%></h1>
-<p><%=@blog.description%></p>
-<p><%=@blog.tags%></p>
-<%= button_to 'Like', blog_likes_path(@blog), method: :blog %>
-<%= @blog.likes.count %> <%= (@blog.likes.count) == 1 ? 'Like' : 'Likes'%>
+<div class="lessonpage">
+  <div class="lesson-show">
+    <div>
+      <h1 class="center"><%=@blog.title%></h1>
+      <span><%=@blog.created_at.strftime('%b %d, %C%y')%></span> <br> <br>
+      <span class="bloglike">
+        <img src="/assets/heart.png">
+        <%=@blog.likes.count %> <%= (@blog.likes.count) == 1 ? 'Like' : 'Likes'%>
+      </span> &nbsp &nbsp &nbsp
+      <%if @blog.user_id != current_user.id%>
+        <% pre_like = @blog.likes.find { |like| like.user_id == current_user.id} %>
+          <% if pre_like %>
+            <%= link_to  blog_like_path(@blog, pre_like), method: :delete, class: 'icon blog-icon' do %>
 
-<% pre_like = @blog.likes.find { |like| like.user_id == current_user.id} %>
-<% if pre_like %>
-  <%= button_to 'Unlike', blog_like_path(@blog, pre_like), method: :delete %>
-<% end %>
+            <%= image_tag("/assets/unlike.png") %>
+          <%end%>
+        <% else %>
+          <%= link_to  blog_likes_path(@blog), method: :blog, class: 'icon blog-icon' do %>
+          <%= image_tag("/assets/like.png") %>
+          <%end%>
+          <% end %>
+        <% end %>
+      <p><%=@blog.description%></p>
+      <p><%=@blog.tags%></p>
+    </div>
+  </div>
 
-<hr>
-
-<h3>Recent Blogs</h3>
-
-<%if @recent_blogs.empty?%>
-  <h1>There are recent blogs</h1>
-<%else%>
-  <%@recent_blogs.take(3).each do |blog|%>
-  <%if blog.user_id != current_user.id && blog.id != @blog.id%>
-  <p>
-    <a href="<%=blog_path(blog.id)%>"><%=blog.title%></a> by: <%=blog.user.first_name.capitalize%>
-    &nbsp Created: <%=blog.created_at.strftime('%b %d, %C%y')%>
-  </p>
-  <%end%>
-  <%end%>
-<%end%>
+  <%if @recent_blogs.empty?%>
+  <h1 class="center">There are recent blogs</h1>
+  <%else%>
+  <h2 class="center">Recent Blogs</h2>
+  <div class="lessons center">
+    <%@recent_blogs.take(3).each do |blog|%>
+    <%if blog.user_id != current_user.id && blog.id != @blog.id%>
+    <div>
+      <a href="<%=blog_path(blog.id) %>">
+        <%=blog.image.attachment.nil? ? tag(:img, src:"/assets/blog.jpg", class: "blogimg"): image_tag(blog.image, class: "blogimg")%>
+      </a>
+      <h2>
+        <a href="<%=blog_path(blog.id)%>"><%=blog.title%></a> by: <%=blog.user.first_name.capitalize%>
+      </h2>
+      <p>
+        Created: <%=blog.created_at.strftime('%b %d, %C%y')%>
+      </p>
+      <p><%=blog.description.truncate(200)%></p>
+      <a class="btn btn-primary" href="<%=blog_path(blog.id)%>">Read More</a>
+      <%end%>
+      <%end%>
+    </div>
+    <%end%>
+  </div>
+</div>
