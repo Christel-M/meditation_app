@@ -1,27 +1,32 @@
-<h1>Chats</h1>
+<div class="chatpage">
+  <div class="message-board">
+    <h2 class="center"> Messages</h2>
 
-<ul>
- <% if @existing_chats_users %>
-   <% @existing_chats_users.each do |other_user| %>
-    <% if other_user != current_user %>
-      <li>
+        <% if !@chats.nil? %>
+        <% @chats.reverse.each do |chat|%>
+        <% if chat.post != nil%>
+          <% @other_user = User.find_by_id(chat.subscriptions[0].user_id)%>
+        <%= link_to(user_chat_path(current_user, chat, :other_user => @other_user.id), method: :get) do %>
+            <%= image_tag(@other_user.picture) if @other_user.picture.attached?%>
+            <%= "Message from: #{@other_user.first_name.capitalize}" %> <br> <br>
+            <% end %>
+            <% end %>
+          <% end %>
+          <%else%>
+          <h1 class="center">No messages at this time</h1>
+        <% end %>
+      </div>
+  <div class="">
+    Users:
+      <% User.all.each do |other_user| %>
+      <% if other_user != current_user %>
+
         <%= link_to(user_chats_path(current_user, :other_user => other_user.id), method: :post) do %>
         <%= other_user.first_name %>
         <% end %>
-      </li>
-     <% end %>
-   <% end %>
-  <% end %>
-</ul>
-All Users:
-<ul>
-  <% User.all.each do |other_user| %>
-   <% if other_user != current_user %>
-     <li>
-       <%= link_to(user_chats_path(current_user, :other_user => other_user.id), method: :post) do %>
-       <%= other_user.first_name %>
-       <% end %>
-     </li>
-    <% end %>
-  <% end %>
-</ul>
+
+      <% end %>
+      <% end %>
+  </div>
+
+</div>

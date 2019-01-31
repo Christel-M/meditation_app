@@ -26,6 +26,7 @@ google:
   service: GCS
   project: meditate-now
   credentials: <%= ENV['GOOGLE_APPLICATION_CREDENTIALS'] %>
+  Rails.application.credentials.meditation_json %>
   bucket: meditate-now
 
 # Use rails credentials:edit to set the Azure Storage secret (as azure_storage:storage_access_key)
@@ -35,7 +36,7 @@ google:
 #   storage_access_key: <%= Rails.application.credentials.dig(:azure_storage, :storage_access_key) %>
 #   container: your_container_name
 
-# mirror:
-#   service: Mirror
-#   primary: local
-#   mirrors: [ amazon, google, microsoft ]
+mirror:
+  service: Mirror
+  primary: local
+  mirrors: [ amazon, google, microsoft ]
