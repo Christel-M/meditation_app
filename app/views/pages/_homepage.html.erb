@@ -44,9 +44,11 @@
       <% if !@chats.nil? %>
       <% @chats.reverse.each do |chat|%>
           <% other_user = User.find_by_id(chat.subscriptions[1].user_id)%>
+          <%if !other_user.nil?%>
           <%= link_to(user_chat_path(current_user, chat, :other_user => other_user.id), method: :get) do %>
             <!-- <%= image_tag(other_user.profile_picture) if other_user.profile_picture.attached?%> -->
               <h4><%= "#{other_user.first_name.capitalize}" %></h4>
+              <% end %>
               <% end %>
 
           <% end %>

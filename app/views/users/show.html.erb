@@ -19,11 +19,7 @@
         <%if logged_in? && @user.id == current_user.id%>
         <a class="icon blog-icon" href="<%=edit_user_path%>">
           <span class="tooltiptext">Edit Profile</span>
-          <img src="/assets/edit.png"></a> &nbsp &nbsp
-          <%= link_to user_path, remote: true, method: :delete, data: {confirm: 'Are you sure?'}, class: 'icon blog-icon' do %>
-            <span class="tooltiptext">Delete Account</span>
-            <%= image_tag("/assets/delete.png") %>
-          <%end%>
+          <img src="/assets/edit.png"></a>
         <%end%>
       </div>
     </div>

@@ -20,13 +20,23 @@
           <%end%>
           <% end %>
         <% end %>
+        <%if session[:user_id] == @blog.user.id%>
+          <a class="icon blog-icon" href="<%= edit_blog_path(@blog.id) %>">
+            <span class="tooltiptext">Edit Post</span>
+            <img src="/assets/edit.png">
+          </a>
+          <%= link_to blog_path(@blog.id), remote: true, method: :delete, data: {confirm: 'Are you sure?'}, class: 'icon blog-icon' do %>
+            <span class="tooltiptext">Delete Account</span>
+            <%= image_tag("/assets/delete.png") %>
+          <%end%>
+        <%end%>
       <p><%=@blog.description%></p>
       <p><%=@blog.tags%></p>
     </div>
   </div>
 
   <%if @recent_blogs.empty?%>
-  <h1 class="center">There are recent blogs</h1>
+  <h1 class="center">There are no recent blogs</h1>
   <%else%>
   <h2 class="center">Recent Blogs</h2>
   <div class="lessons center">

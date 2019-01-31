@@ -11,9 +11,9 @@ class User < ApplicationRecord
 
   has_secure_password
 
-  has_many :messages
-  has_many :subscriptions
-  has_many :chats, through: :subscriptions
+  has_many :messages, dependent: :destroy
+  has_many :subscriptions, dependent: :destroy
+  has_many :chats, through: :subscriptions, dependent: :destroy
   has_one_attached :profile_picture
   has_one_attached :cover_picture
   has_many :likes, dependent: :destroy

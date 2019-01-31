@@ -1,11 +1,11 @@
 <div class="blogpage">
   <h1 class="center">Blogs</h1>
   <%if @user_blogs.empty?%>
-  <h1>There are no blogs</h1>
+  <h1 class="center">There are no blogs</h1>
   <%else%>
   <div class="blog-grid center">
     <%@user_blogs.reverse.each do |blog|%>
-    <div>
+    <div id="blog-<%=blog.id%>">
         <a href="<%=blog_path(blog.id) %>">
           <%=blog.image.attachment.nil? ? tag(:img, src:"/assets/blog.jpg", class: "blogimg"): image_tag(blog.image, class: "blogimg")%>
         </a>

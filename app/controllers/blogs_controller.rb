@@ -33,6 +33,15 @@ class BlogsController < ApplicationController
       end
   end
 
+  def destroy
+    @blog = Blog.find(params[:id])
+    respond_to do |format|
+      format.html
+      format.js
+    end
+    @blog.destroy
+  end
+
   def index
     if params[:title]
       @blogs = Blog.where('title LIKE ?', "%#{params[:title]}%")

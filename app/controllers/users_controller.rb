@@ -26,9 +26,16 @@ class UsersController < ApplicationController
 
   def destroy
     @user =  User.find(params[:id])
-    @user.destroy
-    session[:user_id] = nil
-    redirect_to root_path
+    if @user.destroy
+      session.delete[:user_id]
+      redirect_to root_path
+    end
+    @user_blogs = Blog.where(user_id: @user.id)
+    respond_to do |format|
+      format.html
+      format.js
+    end
+    @blog.destroy
   end
 
 

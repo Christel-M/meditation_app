@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   mount ActionCable.server => '/cable'
   root 'pages#home'
 
-  resources :users, only:[:show, :edit, :update]
+  resources :users, only:[:show, :edit, :update, :destroy]
   # resources :blogs
   resources :locations
   resources :messages, only:[:create]
