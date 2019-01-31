@@ -388,7 +388,20 @@ nav ul,nav li {
   width: calc(100% - 10px);
   height: calc(100% + 10px);
 }
-/*********************BUTTONS************************/
+
+.btn-primary {
+  color: #ffffff !important;
+  background-color: #7fccc4;
+  font-size: 1.1em;
+  border-radius: 10px;
+  transition: color 0.4s;
+}
+
+.btn-primary:hover {
+  color: #ffffff;
+  background-color: #63aba3;
+}
+/*********************FLASH MESSAGES************************/
 .alert {
   color: #ffffff;
   font-size: 1em;

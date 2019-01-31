@@ -3,8 +3,7 @@ Rails.application.routes.draw do
   root 'pages#home'
 
   resources :users, only:[:show, :edit, :update]
-  resources :blogs
-  resources :lessons
+  # resources :blogs
   resources :locations
   resources :messages, only:[:create]
 
@@ -23,5 +22,13 @@ Rails.application.routes.draw do
   post '/signup', to: 'users#create'
 
   get '/myblogs', to: 'users#index'
+
+  get '/lessons/beginner', to: 'lessons#beginner'
+  get '/lessons/intermediate', to: 'lessons#intermediate'
+  get '/lessons/advanced', to: 'lessons#advanced'
+  get '/lessons/beginner/:id', to: 'lessons#show'
+  get '/lessons/intermediate/:id', to: 'lessons#show'
+  get '/lessons/advanced/:id', to: 'lessons#show'
+  get '/lessons', to: 'lessons#index'
 
 end

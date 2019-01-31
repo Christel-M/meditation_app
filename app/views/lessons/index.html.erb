@@ -1,22 +1,37 @@
-<h1>Meditiation Tutorials</h1>
+<div class="lessonpage">
+  <div class="lessoncover">
+    <h1>Meditation Experience</h1>
+  </div>
+  <div class="lesson-grid center">
+    <div>
+      <a href="<%=lessons_beginner_path %>">
+        <img src="/assets/lessonbeg.jpg">
+      </a>
+        <h2>
+          <a href="<%=lessons_beginner_path %>">AWAKENING</a>
+        </h2>
+        <h4>For those with some mindfulness meditation experience</h4>
+    </div>
 
-<h4>Begginer Lessons</h4>
-<%@beg_lessons.each do |lesson| %>
-    <p>
-      <a href="<%=lesson_path(lesson.id)%>"><%=lesson.name%></a>
-    </p>
-<%end%>
+    <div>
+      <a href="<%=lessons_intermediate_path %>">
+        <img src="/assets/lessonint.jpg">
+      </a>
+      <h2>
+        <a href="<%=lessons_intermediate_path %>">FOUNDATIONS</a>
+      </h2>
+      <h4>For those with over one year of a consistent daily meditation practice</h4>
+    </div>
 
-<h4>Intermediate Lessons</h4>
-<%@int_lessons.each do |lesson| %>
-    <p>
-      <a href="<%=lesson_path(lesson.id)%>"><%=lesson.name%></a>
-    </p>
-<%end%>
+    <div>
+      <a href="<%=lessons_advanced_path %>">
+        <img src="/assets/lessonadv.jpg">
+      </a>
+      <h2>
+        <a href="<%=lessons_advanced_path %>">COMMITTED</a>
+      </h2>
+      <h4>For those experienced with non-dual awareness and the pathless path</h4>
+    </div>
 
-<h4>Advanced Lessons</h4>
-<%@adv_lessons.each do |lesson| %>
-    <p>
-      <a href="<%=lesson_path(lesson.id)%>"><%=lesson.name%></a>
-    </p>
-<%end%>
+  </div>
+</div>

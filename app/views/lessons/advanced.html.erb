@@ -1,0 +1,16 @@
+<div class="lessonpage">
+  <div class="lessoncover">
+    <h1>Committed - Advanced</h1>
+  </div>
+  <div class="lessons center">
+    <%@adv_lessons.each do |lesson| %>
+    <div>
+      <h2>
+        <a href="/lessons/<%=lesson.level.name.downcase%>/<%=lesson.id%>"><%=lesson.name%></a>
+      </h2>
+      <p><%=lesson.content.truncate(100)%></p>
+      <a class="btn btn-primary" href="/lessons/<%=lesson.level.name.downcase%>/<%=lesson.id%>">Learn More</a>
+    </div>
+    <%end%>
+  </div>
+</div>

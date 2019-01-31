@@ -1,3 +1,114 @@
 // Place all the styles related to the Lessons controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.lessonpage {
+  display: inline-grid;
+  width: 96%;
+  height: 100%;
+  padding-left: 4%;
+  padding-bottom: 2.5%;
+}
+
+.lesson-grid {
+  display: grid;
+  padding-top: 2.5%;
+  padding-left: 5%;
+  padding-right: 5%;
+  grid-template: 100% / repeat(3, 33.3%);
+  width: 90%;
+  height: 100%;
+  justify-content: center;
+  grid-gap: 2%;
+}
+
+.lesson-grid div {
+  box-shadow: 2px 2px 2px 2px rgba(0,0,0,.3);
+  height: 95%;
+  transition: transform 0.3s ease-in-out;
+}
+
+.lesson-grid div:hover {
+  box-shadow: 2px 2px 2px 2px rgba(0,0,0,.3);
+  transform: scale(1.05, 1.05);
+}
+
+.lesson-grid img {
+  background-position: center;
+  background-size: 100% auto;
+  background-repeat: no-repeat;
+  width: 100%;
+}
+
+.lesson-grid a {
+  text-decoration: none;
+  color: inherit;
+}
+
+.lesson-grid a:hover {
+  color: #63aba3;
+}
+
+.lessoncover {
+  display: block;
+  background-image: url("/assets/lessons.jpg");
+  background-position: center;
+  background-size: 100% auto;
+  background-repeat: no-repeat;
+  width: 100%;
+  height: 350px;
+}
+
+.lessoncover h1 {
+  padding-top: 7%;
+  padding-left: 5%;
+  color: #ffffff;
+  font-family: 'Courgette', cursive;
+  font-size: 5em;
+}
+
+.lessons {
+  display: grid;
+  padding-top: 2.5%;
+  padding-left: 5%;
+  padding-right: 5%;
+  grid-template: 100% / repeat(3, 33.3%);
+  width: 90%;
+  height: 100%;
+  justify-content: center;
+  grid-gap: 2%;
+}
+
+.lessons div {
+  padding-right: 5%;
+  padding-left: 5%;
+  box-shadow: 1px 1px 1px 1px rgba(0,0,0,.3);
+  height: 95%;
+  background-color: #e6e6e6;
+}
+
+.lessons a {
+  text-decoration: none;
+  color: inherit;
+}
+
+.lesson h2:hover, a:hover {
+  color: #63aba3;
+}
+
+.lesson-show {
+  display: grid;
+  padding-left: 20%;
+  padding-right: 20%;
+  padding-top: 5%;
+  padding-bottom: 2%;
+}
+
+.lesson-show div {
+  padding: 3%;
+  // border: 1px solid #a9a9a9;
+}
+
+.lesson-show p {
+  line-height: 1.8;
+}

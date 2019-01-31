@@ -1,17 +1,30 @@
-<!-- Search form -->
-<%= form_tag(blogs_path, method: :get) do %>
-  Search Blog By Title<%= text_field_tag :title, params[:title] %>
-  <%= submit_tag "Search Blog", name: nil %>
-<% end %>
-<!-- end search form -->
-<h1>Blogs</h1>
-<%if @blogs.empty?%>
+<div class="blogpage">
+  <div class="blog-search">
+    <%= form_tag(blogs_path, method: :get) do %>
+      <%= search_field_tag :title, params[:title], placeholder: "Search By Title" %>
+      <%= submit_tag "Search Blog", name: nil %>
+    <% end %>
+  </div>
+
+  <h1 class="center">Blogs</h1>
+  <%if @blogs.empty?%>
   <h1>There are no blogs</h1>
-<%else%>
-  <%@blogs.reverse.each do |blog|%>
-  <p>
-    <a href="<%=blog_path(blog.id)%>"><%=blog.title%></a> by: <a href="<%=user_path(blog.user_id)%>"><%=blog.user.first_name.capitalize%> <br>
-    <p><%= blog.likes.count %> <%= (blog.likes.count) == 1 ? 'Like' : 'Likes'%></p>
-  </p>
+  <%else%>
+  <div class="blog-grid center">
+    <%@blogs.reverse.each do |blog|%>
+    <div>
+        <a href="<%=blog_path(blog.id) %>">
+          <%=blog.image.attachment.nil? ? tag(:img, src:"/assets/blog.jpg", class: "blogimg"): image_tag(blog.image, class: "blogimg")%>
+        </a>
+      <h2>
+        <a href="<%=blog_path(blog.id) %>"><%=blog.title%></a> <br>
+      </h2>
+      <p><%=blog.likes.count %> <%= (blog.likes.count) == 1 ? 'Like' : 'Likes'%></p>
+      <span>By: <a href="<%=user_path(blog.user_id)%>"><%=blog.user.first_name.capitalize%></a></span>
+      <p><%=blog.description.truncate(200)%></p>
+      <a class="btn btn-primary" href="<%=blog_path(blog.id)%>">Read More</a>
+    </div>
+    <%end%>
+  </div>
   <%end%>
-<%end%>
+</div>

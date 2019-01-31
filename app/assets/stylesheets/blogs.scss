@@ -1,3 +1,92 @@
 // Place all the styles related to the Blogs controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.blogpage {
+  display: inline-grid;
+  width: 96%;
+  height: 100%;
+  padding-left: 4%;
+  padding-bottom: 2.5%;
+}
+
+.blog-search {
+  padding: 3%;
+  text-align: right;
+}
+
+.blog-search input[type=search] {
+  box-sizing: content-box;
+  outline: none;
+  background-color: #ffffff;
+  color: #1a1e1d;
+  border: 1px solid #cfcfcf;
+	padding: 9px 0 9px 0;
+	width: 200px;
+  height: 15px;
+	border-radius: 10px;
+  text-align: center;
+}
+
+.blog-search input[type=submit] {
+  text-decoration: none;
+  color: #ffffff;
+  background-color: #7fccc4;
+  padding: 9px 9px 9px 9px;
+  font-size: 1em;
+  border-radius: 10px;
+  transition: color 0.5s;
+}
+
+.blog-search input[type=submit]:hover {
+  background-color: #63aba3;
+  color: #ffffff;
+}
+
+.blogimg {
+  background-position: center;
+  background-size: 100% auto;
+  background-repeat: no-repeat;
+  width: 100%;
+}
+
+.blog-grid {
+  display: grid;
+  padding-top: 2.5%;
+  padding-bottom: 2.5%;
+  padding-left: 5%;
+  padding-right: 5%;
+  grid-template: 100% / repeat(3, 33.3%);
+  width: 90%;
+  height: 100%;
+  justify-content: center;
+  grid-gap: 2%;
+}
+
+.blog-grid div {
+  background-color: #f4faff;
+  box-shadow: 2px 2px 2px 2px rgba(0,0,0,.3);
+  height: 95%;
+  transition: transform 0.3s ease-in-out;
+}
+
+.blog-grid div:hover {
+  box-shadow: 2px 2px 2px 2px rgba(0,0,0,.3);
+  transform: scale(1.05, 1.05);
+}
+
+.blog-grid img {
+  background-position: center;
+  background-size: 100% auto;
+  background-repeat: no-repeat;
+  width: 100%;
+}
+
+.blog-grid a {
+  text-decoration: none;
+  color: inherit;
+}
+
+.blog-grid a:hover {
+  color: #63aba3;
+}
