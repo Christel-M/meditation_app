@@ -10,7 +10,8 @@
 <%else%>
   <%@blogs.reverse.each do |blog|%>
   <p>
-    <a href="<%=blog_path(blog.id)%>"><%=blog.title%></a> by: <%=blog.user.first_name.capitalize%>
+    <a href="<%=blog_path(blog.id)%>"><%=blog.title%></a> by: <a href="<%=user_path(blog.user_id)%>"><%=blog.user.first_name.capitalize%> <br>
+    <p><%= blog.likes.count %> <%= (blog.likes.count) == 1 ? 'Like' : 'Likes'%></p>
   </p>
   <%end%>
 <%end%>

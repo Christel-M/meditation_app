@@ -12,6 +12,10 @@ Rails.application.routes.draw do
    resources :chats, only: [:index, :show, :create]
   end
 
+  resources :blogs do
+    resources :likes
+  end
+
   get '/login', to: 'sessions#login'
   post '/login', to: 'sessions#create'
   delete '/logout', to: 'sessions#destroy'

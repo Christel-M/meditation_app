@@ -16,6 +16,7 @@ class User < ApplicationRecord
   has_many :chats, through: :subscriptions
   has_one_attached :profile_picture
   has_one_attached :cover_picture
+  has_many :likes, dependent: :destroy
 
   def existing_chats_users
     existing_chat_users = []

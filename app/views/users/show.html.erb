@@ -24,14 +24,34 @@
     </div>
   </div>
   <div class="center">
-    <h1>Most Recent Blogs</h1>
-    <%if @recent_blogs != nil %>
-      <%@recent_blogs.reverse.each do |blog| %>
-        <a href="<%=blog_path(blog.id)%>"><%=blog.title%></a>
+  <%if current_user.id == @user.id%>
+  <h1>Recent Blogs</h1>
+    <div class="bloggrid">
+      <%if @recent_blogs != nil %>
+        <%@recent_blogs.reverse.take(3).each do |blog| %>
+          <a href="<%=blog_path(blog.id)%>"><%=blog.title%></a>
+        <%end%>
+      <%else%>
+        <h3>You haven't created a blog yet!</h3>
+        <%= link_to 'Create Blog',  new_blog_path%> <br>
       <%end%>
+      <a href="<%= myblogs_path(@user_id)%>">View More</a>
+    </div>
+
     <%else%>
-      <h3>You haven't created a blog yet!</h3>
-      <%= link_to 'Create Blog',  new_blog_path%> <br>
+
+    <h1><%=@user.first_name.capitalize%>'s Recent Blogs</h1>
+    <div class="bloggrid">
+      <%if @recent_blogs != nil %>
+        <%@recent_blogs.reverse.each do |blog| %>
+          <a href="<%=blog_path(blog.id)%>"><%=blog.title%></a>
+        <%end%>
+      <%else%>
+        <h3>You haven't created a blog yet!</h3>
+        <%= link_to 'Create Blog',  new_blog_path%> <br>
+      <%end%>
+    </div>
+
     <%end%>
   </div>
 </div>
