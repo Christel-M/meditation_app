@@ -3,7 +3,6 @@
     <div class="coverimg">
       <div>
         <%=@user.cover_picture.attachment.nil? ? content_tag(:div, "", id: "coverimg"): image_tag(@user.cover_picture)%>
-        <a href="<%= edit_user_path(@user.id) %>">Edit</a>
       </div>
     </div>
 
@@ -25,6 +24,7 @@
     </div>
   </div>
   <div class="center">
+    <br>
   <%if current_user.id == @user.id%>
   <h1>Recent Blogs</h1>
   <h3>

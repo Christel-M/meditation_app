@@ -1,4 +1,7 @@
 <div class="lessonpage">
+  <div class="blogimg">
+      <%= image_tag(@blog.image, class: "blogimg") if @blog.image.attached?%>
+  </div>
   <div class="lesson-show">
     <div>
       <h1 class="center"><%=@blog.title%></h1>

@@ -28,13 +28,13 @@
   height: 350px;
 }
 
-.coverimg {
+.coverimg img{
   display: block;
   background-position: top;
-  background-size: cover;
+  background-size: 100% 100%;
   background-repeat: no-repeat;
   width: 100%;
-  height: 400px;
+  height: 350px;
 }
 
 .profile{
