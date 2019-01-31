@@ -7,7 +7,7 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 
-Level.create(name: "Beginners")
+Level.create(name: "Beginner")
 Level.create(name: "Intermediate")
 Level.create(name: "Advanced")
 

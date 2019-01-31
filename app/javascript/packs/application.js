@@ -12,10 +12,12 @@ import Vue from 'vue/dist/vue.esm.js';
 import App from '../app.vue'
 
 document.addEventListener('DOMContentLoaded', () => {
+
   new Vue({
     el: '#home',
     data: {
       show: false
     }
   })
+  
 })

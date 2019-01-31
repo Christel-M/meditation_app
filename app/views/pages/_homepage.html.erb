@@ -1,0 +1,30 @@
+<div class="homepage">
+  <div class="homepage-grid center">
+    <div>
+      <h2>Continue lesson</h2>
+    </div>
+
+    <div>
+      <h2>My Blogs</h2>
+      <% if @user_blogs.nil?%>
+        <h3>You haven't created a blog yet</h3>
+        <%= link_to 'Create Blog', new_blog_path%> <br>
+      <%else%>
+        <%@user_blogs.reverse.take(3).each do |blog| %>
+        <p>
+          <a href="<%=blog_path(blog.id)%>"><%=blog.title%></a>
+        </p>
+        <%end%>
+      <%end%>
+    </div>
+
+    <div>
+      <h2>Videos</h2>
+      <a href="/">Youtube videos here</a>
+    </div>
+
+    <div>
+      <h2>Messages</h2>
+    </div>
+  </div>
+</div>

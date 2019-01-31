@@ -1,0 +1,60 @@
+<nav class="menu">
+  <ul>
+    <li><p><i class="fa" style="font-size:2.5em; font-weight: bold;"><%= current_user.first_name.first %></i>
+        <span class="nav-text"><%= current_user.first_name %></span>
+      </p></li>
+  </ul>
+  <ul>
+    <li><a href="/"><i class="fa fa-home"></i>
+        <span class="nav-text">Dashboard</span>
+      </a></li>
+  </ul>
+
+  <ul>
+    <li><a href="<%=user_path(current_user)%>"><i class="fa fa-user"></i>
+        <span class="nav-text">Account</span>
+      </a></li>
+  </ul>
+
+  <ul>
+    <li><a href="<%=lessons_path%>"><i class="fa fa-book"></i>
+        <span class="nav-text">Lessons</span>
+      </a></li>
+  </ul>
+
+  <ul>
+    <li><a href="<%=new_blog_path%>"><i class="fa fa-plus-square"></i>
+        <span class="nav-text">New Blog</span>
+      </a></li>
+  </ul>
+  
+  <ul>
+    <li><a href="<%=myblogs_path%>"><i class="fa fa-file-text"></i>
+      <span class="nav-text">My Blogs</span>
+    </a></li>
+  </ul>
+
+  <ul>
+    <li><a href="<%=blogs_path%>"><i class="fa fa-folder-open"></i>
+        <span class="nav-text">Blogs</span>
+      </a></li>
+  </ul>
+
+  <ul>
+    <li><a href="<%=user_chats_path(current_user)%>"><i class="fa fa-comments"></i>
+        <span class="nav-text">Chats</span>
+      </a></li>
+  </ul>
+
+  <ul>
+    <li><a href="<%=new_location_path%>"><i class="fa fa-map-marker"></i>
+        <span class="nav-text">Search Place</span>
+      </a></li>
+  </ul>
+
+  <ul class="logout">
+    <li><a href="<%=logout_path%>" data-method="delete" rel="nofollow"><i class="fa fa-power-off"></i>
+        <span class="nav-text">Logout</span>
+      </a></li>
+  </ul>
+</nav>

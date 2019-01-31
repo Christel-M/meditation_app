@@ -2,7 +2,7 @@ class User < ApplicationRecord
   before_save { self.email = email.downcase }
 
   validates :first_name, :last_name, presence: true
-  validates :email, presence: true, uniqueness: true, :uniqueness => { :case_sensitive => false }
+  validates :email, presence: true, uniqueness: true
   validates :password, presence: true, confirmation: true, length: { minimum: 6 }, :on => :create
 
   has_many :blogs, dependent: :destroy
@@ -14,6 +14,8 @@ class User < ApplicationRecord
   has_many :messages
   has_many :subscriptions
   has_many :chats, through: :subscriptions
+  has_one_attached :profile_picture
+  has_one_attached :cover_picture
 
   def existing_chats_users
     existing_chat_users = []

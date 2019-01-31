@@ -1,11 +1,6 @@
 class UsersController < ApplicationController
   def new
     @user = User.new
-    # if logged_in?
-    #   redirect_to root_path
-    # else
-    #   render 'new'
-    # end
   end
 
   def create
@@ -13,12 +8,12 @@ class UsersController < ApplicationController
     if @user.valid?
       @user.save
       log_in @user
-      flash[:success] = "Account Created"
+      flash[:success] = "Welcome #{@user.first_name}"
       redirect_to root_path
     else
       p @user.errors.messages
       flash[:error] = "#{@user.errors.messages}"
-      render 'new'
+      redirect_to '/signup'
     end
   end
 
@@ -46,25 +41,19 @@ class UsersController < ApplicationController
   end
 
   def index
-    if logged_in?
-      @user = User.find(session[:user_id])
-      @user_blogs = Blog.where(user_id: @user.id)
-    else
-      redirect_to login_path
-    end
+    @user = User.find(session[:user_id])
+    @user_blogs = Blog.where(user_id: @user.id)
   end
 
   def show
     @user = User.find_by(id: params[:id])
-    if @user.nil?
-      redirect_to root_path
-    end
+    @recent_blogs = Blog.where(user_id: @user)
   end
 
   private
 
   def user_params
-    params.require(:user).permit(:first_name, :last_name, :email, :password, :password_confirmation, :level_id, :location_name)
+    params.require(:user).permit(:first_name, :last_name, :email, :password, :password_confirmation, :level_id, :location_name, :profile_picture, :cover_picture)
   end
 
 end

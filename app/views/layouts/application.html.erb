@@ -11,6 +11,26 @@
   </head>
 
   <body>
+    <div id="alerts" class="fade-in center">
+      <% flash.each do |key, value| %>
+      <div class="alert alert-<%= key %>"><%= value %></div>
+      <% end %>
+    </div>
+
+    <%if logged_in?%>
+    <%= render 'layouts/sidenav' %>
+    <%end%>
+
     <%= yield %>
+
+    <script type="text/javascript">
+      window.addEventListener('load', function(){
+        setTimeout(function(){
+          var alert = document.getElementById('alerts');
+          alert.classList.add('hidden');
+        },3000)
+      });
+  </script>
+
   </body>
 </html>

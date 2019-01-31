@@ -1,19 +1,37 @@
-<%if logged_in?%>
-  <h1>Hello <%=@user.first_name.capitalize%></h1>
+<div class="userpage">
+  <div class="user-grid">
+    <div class="coverimg">
+      <div>
+        <%=@user.cover_picture.attachment.nil? ? content_tag(:div, "", id: "coverimg"): image_tag(@user.cover_picture)%>
+        <a href="<%= edit_user_path(@user.id) %>">Edit</a>
+      </div>
+    </div>
 
-<%=@user.first_name%>
-<%=@user.last_name%> <br>
-<%=@user.email%> <br>
-<%= @user.location_name%> <br>
-<%=@user.level.name%> <br> <br>
-
-<%location = Location.create(address: @user.location_name)%>
-<iframe width="300" height="300" frameborder="0" style="border:0"
- src="https://www.google.com/maps/embed/v1/place?key=<%=ENV['MAP_API_KEY']%>&q=<%=location.latitude%>,<%=location.longitude%>"
- allowfullscreen>
-</iframe>
-
-<%= link_to 'Logout', logout_path, method: :delete %>
-<a href="#"></a>
-
-<%end%>
+    <div class="profile">
+      <div>
+        <%=@user.profile_picture.attachment.nil? ? content_tag(:div, "", id: "profileimg"): image_tag(@user.profile_picture)%>
+      </div>
+      <div class="center">
+        <h1><%=@user.first_name.capitalize%> <%=@user.last_name.capitalize%></h1>
+        <p><strong>Email:</strong> <%=@user.email%></p>
+        <p><strong>Location:</strong> <%= @user.location_name%></p>
+        <p><strong>Level:</strong> <%=@user.level.name%></p>
+        <%if logged_in? && @user.id == current_user.id%>
+          <a href="<%= edit_user_path(@user.id) %>">Edit</a>
+          <%= link_to 'Logout', logout_path, method: :delete %>
+        <%end%>
+      </div>
+    </div>
+  </div>
+  <div class="center">
+    <h1>Most Recent Blogs</h1>
+    <%if @recent_blogs != nil %>
+      <%@recent_blogs.reverse.each do |blog| %>
+        <a href="<%=blog_path(blog.id)%>"><%=blog.title%></a>
+      <%end%>
+    <%else%>
+      <h3>You haven't created a blog yet!</h3>
+      <%= link_to 'Create Blog',  new_blog_path%> <br>
+    <%end%>
+  </div>
+</div>

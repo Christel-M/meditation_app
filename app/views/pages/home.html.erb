@@ -3,15 +3,8 @@
 </head>
 
 <%if logged_in?%>
-<h1>Hi <%=current_user.first_name %></h1>
-<%= link_to 'My Profile',  user_path(current_user)%> <br>
-<%= link_to 'Create Blog',  new_blog_path%> <br>
-<%= link_to 'View All Blogs',  blogs_path%> <br>
-<%= link_to 'View My Blogs',  myblogs_path%> <br>
-<%= link_to 'View Lessons',  lessons_path%> <br>
-<%= link_to 'View Chats',  user_chats_path(current_user)%> <br>
-<%= link_to 'Search Location',  new_location_path(current_user)%> <br>
-<%= link_to 'Logout', logout_path, method: :delete %>
+
+<%= render 'pages/homepage' %>
 
 <%else%>
 <body id="homebg">
@@ -27,7 +20,7 @@
           <%=link_to 'Sign In', login_path, class: "btn btn-sign" %>
         </p>
         <p>
-          <%=link_to 'Sign Up', new_user_path, class: "btn btn-sign" %>
+          <%=link_to 'Sign Up', signup_path, class: "btn btn-sign" %>
         </p>
       </div>
     </transition>
