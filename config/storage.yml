@@ -15,7 +15,7 @@ local:
 #   bucket: your_own_bucket
 
 # Remember not to checkin your GCS keyfile to a repository
-google:
+google_dev:
   service: GCS
   project: meditate-now
   credentials: <%= Rails.root.join("config/secrets/meditate-now.json") %>
