@@ -11,9 +11,9 @@
 
     <div>
       <h2>My Blogs</h2>
-      <% if @user_blogs.nil?%>
+      <% if @user_blogs.count == 0 %>
         <h3>You haven't created a blog yet</h3>
-        <%= link_to 'Create Blog', new_blog_path%> <br>
+        <%= link_to 'Create your first blog', new_blog_path%> <br>
       <%else%>
         <%@user_blogs.reverse.take(3).each do |blog| %>
         <p>
@@ -25,9 +25,9 @@
 
     <div>
       <h2>Recent Blogs</h2>
-      <% if @blogs.nil?%>
-        <h3>You haven't created a blog yet</h3>
-        <%= link_to 'Create Blog', new_blog_path%> <br>
+      <% if @blogs.count == 0%>
+        <h3>There are no blogs at this time</h3>
+        <%= link_to 'Create your first blog', new_blog_path%> <br>
       <%else%>
         <%@blogs.reverse.take(3).each do |blog| %>
         <%if blog.user_id != current_user.id %>
@@ -41,18 +41,18 @@
 
     <div>
       <h2>Messages</h2>
-      <% if !@chats.nil? %>
+      <% if @chats.count == 0 %>
+      <h4>There are no messages at this time</h4>
+      <%else%>
       <% @chats.reverse.each do |chat|%>
-          <% other_user = User.find_by_id(chat.subscriptions[1].user_id)%>
-          <%if !other_user.nil?%>
+      <% other_user = User.find_by_id(chat.subscriptions[0].user_id)%>
+        <%if !other_user.nil?%>
           <%= link_to(user_chat_path(current_user, chat, :other_user => other_user.id), method: :get) do %>
-            <!-- <%= image_tag(other_user.profile_picture) if other_user.profile_picture.attached?%> -->
-              <h4><%= "#{other_user.first_name.capitalize}" %></h4>
-              <% end %>
-              <% end %>
-
+            <h4><%= "From: #{other_user.first_name.capitalize}" %></h4>
           <% end %>
         <% end %>
+      <% end %>
+      <% end %>
     </div>
   </div>
 </div>

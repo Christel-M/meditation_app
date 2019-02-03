@@ -1,14 +1,12 @@
 <div class="userpage">
   <div class="user-grid">
     <div class="coverimg">
-      <div>
-        <%=@user.cover_picture.attachment.nil? ? content_tag(:div, "", id: "coverimg"): image_tag(@user.cover_picture)%>
-      </div>
+      <%=@user.cover_picture.attachment.nil? ? image_tag("/assets/cover.jpg", class: "coverdefault"): image_tag(@user.cover_picture)%>
     </div>
 
     <div class="profile">
       <div>
-        <%=@user.profile_picture.attachment.nil? ? content_tag(:div, "", id: "profileimg"): image_tag(@user.profile_picture)%>
+        <%=@user.profile_picture.attachment.nil? ? image_tag("/assets/profile.jpg", class: "profiledefault"): image_tag(@user.profile_picture)%>
       </div>
       <div class="center">
         <h1><%=@user.first_name.capitalize%> <%=@user.last_name.capitalize%></h1>

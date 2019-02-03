@@ -18,23 +18,26 @@
   justify-content: center;
 }
 
-#coverimg {
-  background-image: url("/assets/cover.jpg");
+.coverimg {
+  overflow: hidden;
+  height: 450px;
+}
+
+.coverdefault {
+  overflow: hidden;
+  height: 450px;
+}
+
+.coverdefault img{
   display: block;
-  background-position: top;
-  background-size: 100% auto;
-  background-repeat: no-repeat;
+  background-position: center;
   width: 100%;
-  height: 350px;
 }
 
 .coverimg img{
   display: block;
-  background-position: top;
-  background-size: 100% 100%;
-  background-repeat: no-repeat;
+  background-position: center;
   width: 100%;
-  height: 350px;
 }
 
 .profile{
@@ -47,22 +50,24 @@
 }
 
 .profile div:nth-child(1) {
+  overflow: hidden;
   width: 100%;
+  border: 10px solid #ffffff;
+  height: 350px;
 }
 
 .profile div:nth-child(1) img {
-  width: 100%;
-  background-size: 100% 100%;
+  background-position: center;
   background-repeat: no-repeat;
-  border: 10px solid #ffffff;
 }
 
-#profileimg {
-  background-image: url("/assets/profile.jpg");
-  background-size: 100% 100%;
+.profiledefault{
+  width: 350px;
+}
+
+.profiledefault img {
+  background-size: cover;
   background-repeat: no-repeat;
-  height: 100%;
-  border: 10px solid #ffffff;
 }
 
 .profile div:nth-child(2) {
