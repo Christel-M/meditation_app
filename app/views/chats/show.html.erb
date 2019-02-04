@@ -1,18 +1,12 @@
-<div>
-  <h5>Chat with <%= @other_user.first_name %></h5>
+<div id="messages">
+  <h3 class="center">Chatting with <%=link_to "#{@other_user.first_name.capitalize}", user_path(@other_user.id) %></h3>
   <% if @chat.messages.any? %>
-    <div id="messages">
-      <%= render partial: 'messages/message', collection: @chat.messages.order(id: :asc)%>
-    </div>
-  <%else%>
-    <div id="messages">
-    </div>
+    <%= render partial: 'messages/message', collection: @chat.messages.order(id: :asc)%>
   <%end%>
+  <%= render partial: 'messages/message_form', locals: {message: @message, chat: @chat}%>
 </div>
-<%= render partial: 'messages/message_form', locals: {message: @message, chat: @chat}%>
+
 <script>
   createMessageChannel();
-  // app/assets/javascripts/channels/messages.js
   messageForm();
-  // app/assets/javascripts/messages_form.js
 </script>

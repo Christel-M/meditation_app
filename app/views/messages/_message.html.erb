@@ -1,6 +1,7 @@
 <div class="bubble">
-  <p>
-    <%= image_tag(message.user.profile_picture, class: "userimg") if message.user.profile_picture.attached?%>
+  <div class="chatimg">
+    <%=message.user.profile_picture.attachment.nil? ? image_tag("/assets/profile.jpg", class: "chatdefault"): image_tag(message.user.profile_picture)%>
     <%= message.user.first_name.capitalize %>: <%=message.content%> <br>
-  <span>  Sent: <%= message.created_at.strftime('%b %d, %C%y %r') %></span> </p>
+    <span>  Sent: <%= message.created_at.strftime('%b %d, %C%y %r') %></span>
+  </div>
 </div>

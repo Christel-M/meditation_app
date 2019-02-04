@@ -291,14 +291,6 @@ nav ul,nav li {
   color: #ffffff;
 }
 
-.chatpage {
-  display: inline-grid;
-  width: 90%;
-  height: 100%;
-  padding-left: 10%;
-  padding-bottom: 2.5%;
-}
-
 /*********************ANIMATIONS************************/
 .bounce-enter-active {
   animation: bounce-in 1s;
@@ -433,48 +425,41 @@ nav ul,nav li {
 
 
 /*********************CHAT MESSAGES************************/
-.msg-box {
+#messages {
+  padding-top: 10%;
+  font-size: 1.3em;
+  color: #1a1e1d;
+}
+.chatpage {
   display: inline-grid;
-  width: 96%;
+  width: 90%;
   height: 100%;
-  padding-left: 4%;
+  padding-top: 5%;
+  padding-left: 10%;
   padding-bottom: 2.5%;
 }
 
-.msg-box a {
-  color: #46589e;
+.chatpage span {
+  font-size: 1.4em;
 }
 
-.msg-box a:hover {
-  color: #3a4571;
+.chatimg img {
+  width: 50px;
+  height: 50px;
+  border-radius: 50px;
 }
 
-#messages {
-  padding: 10%;
-  font-size: 1.3em;
-  color: #252839;
+.chatdefault img {
+  width: 50px;
+  height: 50px;
+  border-radius: 50px;
 }
-
-.message-board a {
-  color: #252839;
-}
-
-.message-board a:hover {
-  color: #3a4571;
-}
-
-
-.message-board img {
-  width: 60px;
-  height: 60px;
-}
-
 
 .bubble {
   display: inline-grid;
-  width: 96%;
-  height: 100%;
-  padding-left: 4%;
+  width: 60%;
+  padding-left: 20%;
+  padding-right: 20%;
   padding-bottom: 2.5%;
 }
 
@@ -482,7 +467,21 @@ nav ul,nav li {
   font-size: .7em;
 }
 
-.bubble img {
-  width: 50px;
-  height: 50px;
+.msg-box {
+  display: block;
+  width: 65%;
+  padding-left: 18%;
+  padding-right: 15%;
+  padding-bottom: 2.5%;
+}
+
+.msg-box input[type=text] {
+  width: 80%;
+  background: #e6e6e6;
+	border: none;
+	border: 1px solid #87b8bd;
+	outline: none;
+	padding: 10px;
+  font-style: italic;
+  font-size: 1em;
 }

@@ -41,18 +41,21 @@
 
     <div>
       <h2>Messages</h2>
-      <% if @chats.count == 0 %>
-      <h4>There are no messages at this time</h4>
-      <%else%>
-      <% @chats.reverse.each do |chat|%>
-      <% other_user = User.find_by_id(chat.subscriptions[0].user_id)%>
-        <%if !other_user.nil?%>
-          <%= link_to(user_chat_path(current_user, chat, :other_user => other_user.id), method: :get) do %>
-            <h4><%= "From: #{other_user.first_name.capitalize}" %></h4>
-          <% end %>
-        <% end %>
-      <% end %>
-      <% end %>
+        <%@chats.take(3).reverse.each do |chat| %>
+          <%user1 = User.find_by_id(chat.subscriptions[0].user_id)%>
+          <%user2 = User.find_by_id(chat.subscriptions[1].user_id)%>
+          <%if !user1.nil? && !user2.nil?%>
+            <%if user1.id == current_user.id%>
+              <%= link_to(user_chat_path(user1, chat, :other_user => user2.id), method: :get) do %>
+                <h4><%= "From: #{user2.first_name.capitalize}" %></h4>
+              <% end %>
+            <%elsif user1.id == user2.id%>
+              <%= link_to(user_chat_path(user2, chat, :other_user => user1.id), method: :get) do %>
+                <h4><%= "From: #{user1.first_name.capitalize}" %></h4>
+              <% end %>
+            <%end%>
+          <%end%>
+        <%end%>
     </div>
   </div>
 </div>
